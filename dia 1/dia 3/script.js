@@ -1,244 +1,294 @@
 
 // ========================================
 // PROYECTO AURORA - DIA 3 Y 4
+// VERSION CORREGIDA
 // ========================================
 
-const sobreContenedor = document.getElementById("sobreContenedor");
-const botonAbrir = document.getElementById("botonAbrir");
-const portada = document.getElementById("portada");
-const seccionCarta = document.getElementById("seccionCarta");
-const seccionMusica = document.getElementById("seccionMusica");
-const botonIrMusica = document.getElementById("irMusica");
+document.addEventListener("DOMContentLoaded", () => {
 
-// ========================================
-// CREAR PARTICULAS DE LUZ
-// ========================================
+    const obtener = (id) => document.getElementById(id);
 
-const particulas = document.getElementById("particulas");
+    const sobreContenedor = obtener("sobreContenedor");
+    const botonAbrir = obtener("botonAbrir");
+    const portada = obtener("portada");
+    const seccionCarta = obtener("seccionCarta");
+    const seccionMusica = obtener("seccionMusica");
+    const botonIrMusica = obtener("irMusica");
 
-for (let i = 0; i < 75; i++) {
-    const particula = document.createElement("span");
+    const particulas = obtener("particulas");
+    const contenedorPetalos = obtener("petalos");
 
-    particula.classList.add("particula");
+    // ========================================
+    // COMPROBAR ELEMENTOS PRINCIPALES
+    // ========================================
 
-    particula.style.left = Math.random() * 100 + "%";
-    particula.style.top = Math.random() * 100 + "%";
-    particula.style.setProperty(
-        "--duracion",
-        (2 + Math.random() * 5) + "s"
-    );
+    if (!botonAbrir || !portada || !seccionCarta) {
+        console.error("No se encontraron los elementos de apertura de la carta.");
+        return;
+    }
 
-    particula.style.animationDelay = Math.random() * 5 + "s";
+    // ========================================
+    // CREAR PARTICULAS
+    // ========================================
 
-    particulas.appendChild(particula);
-}
+    if (particulas) {
+        for (let i = 0; i < 75; i++) {
+            const particula = document.createElement("span");
 
-// ========================================
-// PETALOS FLOTANTES
-// ========================================
+            particula.classList.add("particula");
+            particula.style.left = Math.random() * 100 + "%";
+            particula.style.top = Math.random() * 100 + "%";
 
-const contenedorPetalos = document.getElementById("petalos");
+            particula.style.setProperty(
+                "--duracion",
+                (2 + Math.random() * 5) + "s"
+            );
 
-function crearPetalo() {
-    const petalo = document.createElement("span");
+            particula.style.animationDelay = Math.random() * 5 + "s";
 
-    petalo.classList.add("petalo");
-    petalo.textContent = Math.random() > 0.5 ? "✿" : "♡";
+            particulas.appendChild(particula);
+        }
+    }
 
-    petalo.style.left = Math.random() * 100 + "%";
-    petalo.style.setProperty(
-        "--caida",
-        (9 + Math.random() * 10) + "s"
-    );
+    // ========================================
+    // PETALOS FLOTANTES
+    // ========================================
 
-    petalo.style.fontSize = (10 + Math.random() * 13) + "px";
+    function crearPetalo() {
+        if (!contenedorPetalos) return;
 
-    contenedorPetalos.appendChild(petalo);
+        const petalo = document.createElement("span");
 
-    setTimeout(() => {
-        petalo.remove();
-    }, 20000);
-}
+        petalo.classList.add("petalo");
+        petalo.textContent = Math.random() > 0.5 ? "✿" : "♡";
 
-setInterval(crearPetalo, 1200);
+        petalo.style.left = Math.random() * 100 + "%";
 
-// ========================================
-// ABRIR EL SOBRE Y MOSTRAR LA CARTA
-// ========================================
+        petalo.style.setProperty(
+            "--caida",
+            (9 + Math.random() * 10) + "s"
+        );
 
-let cartaAbierta = false;
+        petalo.style.fontSize = (10 + Math.random() * 13) + "px";
 
-botonAbrir.addEventListener("click", () => {
-    if (cartaAbierta) return;
+        contenedorPetalos.appendChild(petalo);
 
-    cartaAbierta = true;
+        setTimeout(() => petalo.remove(), 20000);
+    }
 
-    sobreContenedor.classList.add("abierto");
+    if (contenedorPetalos) {
+        setInterval(crearPetalo, 1200);
+    }
 
-    botonAbrir.disabled = true;
-    botonAbrir.textContent = "Preparando algo para ti...";
+    // ========================================
+    // ABRIR LA CARTA - CORREGIDO
+    // ========================================
 
-    setTimeout(() => {
-        portada.style.transition = "opacity 1s ease";
-        portada.style.opacity = "0";
+    let cartaAbierta = false;
 
-        setTimeout(() => {
-            portada.classList.add("oculto");
-            seccionCarta.classList.remove("oculto");
+    botonAbrir.addEventListener("click", () => {
 
-            window.scrollTo({
-                top: 0,
-                behavior: "smooth"
-            });
-        }, 1000);
+        if (cartaAbierta) return;
 
-    }, 1000);
-});
+        cartaAbierta = true;
 
-// ========================================
-// IR A LA CANCION
-// ========================================
+        botonAbrir.disabled = true;
+        botonAbrir.textContent = "Abriendo tu carta...";
 
-botonIrMusica.addEventListener("click", () => {
+        if (sobreContenedor) {
+            sobreContenedor.classList.add("abierto");
+        }
 
-    seccionMusica.classList.remove("oculto");
+        // Ocultar la portada
+        portada.classList.add("oculto");
 
-    setTimeout(() => {
-        seccionMusica.scrollIntoView({
-            behavior: "smooth",
-            block: "start"
+        // Mostrar la carta inmediatamente
+        seccionCarta.classList.remove("oculto");
+
+        // Asegurar que el papel sea visible
+        const papel = seccionCarta.querySelector(".papel");
+
+        if (papel) {
+            papel.classList.add("visible");
+            papel.style.opacity = "1";
+            papel.style.visibility = "visible";
+            papel.style.transform = "translateY(0)";
+        }
+
+        // Mostrar la carta desde el principio
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
         });
-    }, 100);
 
-});
-
-// ========================================
-// REPRODUCTOR MUSICAL
-// ========================================
-
-const cancion = document.getElementById("cancion");
-const botonReproducir = document.getElementById("botonReproducir");
-const iconoPlay = document.getElementById("iconoPlay");
-const disco = document.getElementById("disco");
-const barraProgreso = document.getElementById("barraProgreso");
-const tiempoActual = document.getElementById("tiempoActual");
-const duracion = document.getElementById("duracion");
-const estadoMusica = document.getElementById("estadoMusica");
-
-function formatoTiempo(segundos) {
-    if (!Number.isFinite(segundos)) return "0:00";
-
-    const minutos = Math.floor(segundos / 60);
-    const segundosRestantes = Math.floor(segundos % 60);
-
-    return `${minutos}:${String(segundosRestantes).padStart(2, "0")}`;
-}
-
-botonReproducir.addEventListener("click", async () => {
-
-    if (cancion.paused) {
-        try {
-            await cancion.play();
-
-            iconoPlay.textContent = "Ⅱ";
-            disco.classList.add("girando");
-            estadoMusica.textContent = "Reproduciendo nuestra canción ♡";
-
-        } catch (error) {
-            estadoMusica.textContent =
-                "No se pudo reproducir el audio comprueba que el archivo exista";
-            console.error("Error al reproducir:", error);
-        }
-
-    } else {
-        cancion.pause();
-
-        iconoPlay.textContent = "▶";
-        disco.classList.remove("girando");
-        estadoMusica.textContent = "Canción pausada";
-    }
-});
-
-// Actualizar duración
-
-cancion.addEventListener("loadedmetadata", () => {
-    duracion.textContent = formatoTiempo(cancion.duration);
-});
-
-// Actualizar barra de progreso
-
-cancion.addEventListener("timeupdate", () => {
-
-    tiempoActual.textContent = formatoTiempo(cancion.currentTime);
-
-    if (Number.isFinite(cancion.duration) && cancion.duration > 0) {
-        barraProgreso.value =
-            (cancion.currentTime / cancion.duration) * 100;
-    }
-});
-
-// Permitir avanzar o retroceder
-
-barraProgreso.addEventListener("input", () => {
-
-    if (Number.isFinite(cancion.duration) && cancion.duration > 0) {
-        cancion.currentTime =
-            (barraProgreso.value / 100) * cancion.duration;
-    }
-
-});
-
-// Cuando termina la canción
-
-cancion.addEventListener("ended", () => {
-
-    iconoPlay.textContent = "▶";
-    disco.classList.remove("girando");
-    barraProgreso.value = 0;
-
-    estadoMusica.textContent =
-        "Espero que hayas disfrutado esta canción ♡";
-
-});
-
-// Si el archivo no se encuentra
-
-cancion.addEventListener("error", () => {
-
-    estadoMusica.textContent =
-        "No se encontró la canción revisa la carpeta Imagenes";
-
-});
-
-// ========================================
-// ANIMACION DE APARICION AL DESPLAZARSE
-// ========================================
-
-const elementos = document.querySelectorAll(
-    ".papel, .tarjeta-musica, .dedicatoria-musica, .mensaje-final"
-);
-
-const observador = new IntersectionObserver((entradas) => {
-
-    entradas.forEach((entrada) => {
-
-        if (entrada.isIntersecting) {
-            entrada.target.classList.add("visible");
-        }
-
+        console.log("La carta se ha abierto correctamente ♡");
     });
 
-}, {
-    threshold: 0.12
+    // ========================================
+    // IR A LA CANCION
+    // ========================================
+
+    if (botonIrMusica && seccionMusica) {
+
+        botonIrMusica.addEventListener("click", () => {
+
+            seccionMusica.classList.remove("oculto");
+
+            setTimeout(() => {
+                seccionMusica.scrollIntoView({
+                    behavior: "smooth",
+                    block: "start"
+                });
+            }, 100);
+
+        });
+    }
+
+    // ========================================
+    // REPRODUCTOR MUSICAL
+    // ========================================
+
+    const cancion = obtener("cancion");
+    const botonReproducir = obtener("botonReproducir");
+    const iconoPlay = obtener("iconoPlay");
+    const disco = obtener("disco");
+    const barraProgreso = obtener("barraProgreso");
+    const tiempoActual = obtener("tiempoActual");
+    const duracion = obtener("duracion");
+    const estadoMusica = obtener("estadoMusica");
+
+    function formatoTiempo(segundos) {
+        if (!Number.isFinite(segundos)) return "0:00";
+
+        const minutos = Math.floor(segundos / 60);
+        const segundosRestantes = Math.floor(segundos % 60);
+
+        return `${minutos}:${String(segundosRestantes).padStart(2, "0")}`;
+    }
+
+    if (botonReproducir && cancion) {
+
+        botonReproducir.addEventListener("click", async () => {
+
+            if (cancion.paused) {
+
+                try {
+                    await cancion.play();
+
+                    if (iconoPlay) iconoPlay.textContent = "Ⅱ";
+                    if (disco) disco.classList.add("girando");
+
+                    if (estadoMusica) {
+                        estadoMusica.textContent = "Reproduciendo nuestra canción ♡";
+                    }
+
+                } catch (error) {
+
+                    if (estadoMusica) {
+                        estadoMusica.textContent =
+                            "No se pudo reproducir el audio comprueba que el archivo exista";
+                    }
+
+                    console.error("Error al reproducir:", error);
+                }
+
+            } else {
+
+                cancion.pause();
+
+                if (iconoPlay) iconoPlay.textContent = "▶";
+                if (disco) disco.classList.remove("girando");
+
+                if (estadoMusica) {
+                    estadoMusica.textContent = "Canción pausada";
+                }
+            }
+        });
+
+        cancion.addEventListener("loadedmetadata", () => {
+            if (duracion) {
+                duracion.textContent = formatoTiempo(cancion.duration);
+            }
+        });
+
+        cancion.addEventListener("timeupdate", () => {
+
+            if (tiempoActual) {
+                tiempoActual.textContent = formatoTiempo(cancion.currentTime);
+            }
+
+            if (barraProgreso && Number.isFinite(cancion.duration) && cancion.duration > 0) {
+                barraProgreso.value =
+                    (cancion.currentTime / cancion.duration) * 100;
+            }
+        });
+
+        if (barraProgreso) {
+            barraProgreso.addEventListener("input", () => {
+
+                if (Number.isFinite(cancion.duration) && cancion.duration > 0) {
+                    cancion.currentTime =
+                        (barraProgreso.value / 100) * cancion.duration;
+                }
+            });
+        }
+
+        cancion.addEventListener("ended", () => {
+
+            if (iconoPlay) iconoPlay.textContent = "▶";
+            if (disco) disco.classList.remove("girando");
+            if (barraProgreso) barraProgreso.value = 0;
+
+            if (estadoMusica) {
+                estadoMusica.textContent =
+                    "Espero que hayas disfrutado esta canción ♡";
+            }
+        });
+
+        cancion.addEventListener("error", () => {
+
+            if (estadoMusica) {
+                estadoMusica.textContent =
+                    "No se encontró la canción revisa la carpeta Imagenes";
+            }
+        });
+    }
+
+    // ========================================
+    // ANIMACIONES AL DESPLAZARSE
+    // ========================================
+
+    const elementos = document.querySelectorAll(
+        ".papel, .tarjeta-musica, .dedicatoria-musica, .mensaje-final"
+    );
+
+    if ("IntersectionObserver" in window) {
+
+        const observador = new IntersectionObserver((entradas) => {
+
+            entradas.forEach((entrada) => {
+
+                if (entrada.isIntersecting) {
+                    entrada.target.classList.add("visible");
+                }
+
+            });
+
+        }, {
+            threshold: 0.12
+        });
+
+        elementos.forEach((elemento) => {
+            observador.observe(elemento);
+        });
+
+    } else {
+        elementos.forEach((elemento) => {
+            elemento.classList.add("visible");
+        });
+    }
+
+    console.log("Proyecto Aurora - Una carta para ti ♡");
+    console.log("Hecho con mucho cariño.");
+
 });
-
-elementos.forEach((elemento) => {
-    observador.observe(elemento);
-});
-
-// ========================================
-// MENSAJE DE BIENVENIDA EN CONSOLA
-// ========================================
-
-console.log("Proyecto Aurora - Una carta para ti ♡");
-console.log("Hecho con mucho cariño.");
