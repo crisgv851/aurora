@@ -1,0 +1,21 @@
+<!doctype html>
+<html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Día 7 | Ábrelo cuando lo necesites</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&family=Great+Vibes&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css"></head><body>
+<div class="luz"></div><div id="estrellas"></div>
+<header><a href="#inicio">PROYECTO AURORA</a><span>DÍA 07 · UN BOTIQUÍN PARA EL CORAZÓN</span></header>
+<main>
+<section class="portada" id="inicio"><div class="sello">14 frascos · 70 cartas</div><p class="eyebrow">PARA CADA VERSIÓN DE TI</p>
+<h1>Ábrelo cuando<br><em>lo necesites</em></h1><p class="intro">No todos los días se sienten igual. Por eso preparé un pequeño rincón con palabras para acompañarte en muchos de ellos.</p>
+<button class="principal" id="entrar">Descubrir mis frascos <span>♡</span></button><small>elige el que se parezca a cómo te sientes hoy</small></section>
+<section id="intro" class="panel oculto"><p class="eyebrow">UN PEQUEÑO RECORDATORIO</p><h2>Para los días buenos<br>y los que cuestan un poquito más</h2>
+<p>Dentro de cada frasco hay cinco cartas. Puedes abrirlas cuando quieras, volver a leerlas y descubrir una distinta cada vez. No tienes que sentirte de ninguna manera en particular para estar aquí.</p>
+<p>Estas palabras quieren acompañarte, no reemplazar un abrazo, una conversación o la ayuda de alguien de confianza cuando la necesites.</p><button class="principal" id="ver">Elegir un frasco</button></section>
+<section id="coleccion" class="oculto"><div class="titulo"><p class="eyebrow">TU PEQUEÑO RINCÓN</p><h2>¿Cómo está tu corazón hoy?</h2><p>Escoge el frasco que necesites. No hay un orden correcto.</p></div><div class="rejilla" id="rejilla"></div><p class="nota">Cada frasco guarda cinco cartas. No se repiten hasta que hayas descubierto todas las de ese frasco.</p></section>
+</main>
+<div class="fondo-modal oculto" id="modal" role="dialog" aria-modal="true" aria-labelledby="titulo-carta"><article class="carta"><button class="cerrar" id="cerrar" aria-label="Cerrar">×</button>
+<div class="icono-carta" id="icono">♡</div><p class="numero" id="numero"></p><p class="categoria" id="categoria"></p><h2 id="titulo-carta"></h2><div class="adorno">✦　♡　✦</div><div id="texto" class="texto"></div>
+<div class="pie"><span id="progreso"></span><button class="principal" id="siguiente">Otra carta de este frasco ↗</button></div><p class="firma">con cariño, para ti <span>♡</span></p></article></div>
+<footer>PROYECTO AURORA <span>✦</span> DÍA 7</footer><script src="script.js"></script></body></html>
