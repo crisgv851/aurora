@@ -1,0 +1,274 @@
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#f8edf0">
+    <title>Día 5 | Si pudiera regalarte algo</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&family=Great+Vibes&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="estilos.css">
+</head>
+
+<body>
+
+    <div class="fondo">
+        <div class="mancha mancha-uno"></div>
+        <div class="mancha mancha-dos"></div>
+        <div id="particulas"></div>
+        <div id="petalos"></div>
+    </div>
+
+    <header class="encabezado">
+        <span>PROYECTO AURORA</span>
+        <div class="linea"></div>
+        <span>UN DETALLE PARA TI</span>
+    </header>
+
+    <main>
+
+        <!-- PORTADA -->
+
+        <section class="portada" id="portada">
+
+            <div class="flor-decorativa">✿</div>
+
+            <p class="numero">05 — UN REGALO DIFERENTE</p>
+
+            <h1>Si pudiera regalarte algo...</h1>
+
+            <p class="subtitulo">
+                No necesitaría una fecha especial para querer darte
+                cosas bonitas, pero hoy preparé cinco pequeños regalos
+                que nacen de lo que siento por ti
+            </p>
+
+            <div class="adorno">
+                <span></span>
+                ♡
+                <span></span>
+            </div>
+
+            <button class="boton-comenzar" id="comenzar">
+                Descubrir tus regalos
+                <span>→</span>
+            </button>
+
+            <p class="nota-portada">
+                Cinco pequeños detalles, pensados especialmente para ti
+            </p>
+
+        </section>
+
+        <!-- INTRODUCCION -->
+
+        <section class="introduccion oculto" id="introduccion">
+
+            <p class="etiqueta">UNA PEQUEÑA TIENDA DE DETALLES</p>
+
+            <h2>Hoy quiero regalarte algo más que cosas materiales</h2>
+
+            <p>
+                Imagina por un momento que pudiera preparar cinco regalos
+                y que cada uno pudiera representar algo que quisiera
+                entregarte de corazón
+            </p>
+
+            <p>
+                No son regalos que puedas envolver en papel ni guardar
+                en una caja, pero son cosas que me gustaría que siempre
+                pudieras encontrar en mi forma de quererte
+            </p>
+
+            <button id="verRegalos" class="boton-secundario">
+                Ver mis cinco regalos ↓
+            </button>
+
+        </section>
+
+        <!-- REGALOS -->
+
+        <section class="regalos oculto" id="regalos">
+
+            <div class="titulo-seccion">
+                <p class="etiqueta">ESCOGE UN REGALO</p>
+                <h2>Hay algo para ti</h2>
+                <p>Puedes abrirlos en el orden que quieras</p>
+            </div>
+
+            <div class="rejilla-regalos">
+
+                <button class="regalo" data-regalo="0">
+                    <span class="numero-regalo">01</span>
+                    <span class="emoji-regalo">🫂</span>
+                    <span class="nombre-regalo">Un abrazo</span>
+                    <span class="descripcion-regalo">Para tus días difíciles</span>
+                    <span class="abrir-regalo">Abrir regalo ↗</span>
+                </button>
+
+                <button class="regalo" data-regalo="1">
+                    <span class="numero-regalo">02</span>
+                    <span class="emoji-regalo">🏡</span>
+                    <span class="nombre-regalo">Un lugar seguro</span>
+                    <span class="descripcion-regalo">Donde puedas ser tú</span>
+                    <span class="abrir-regalo">Abrir regalo ↗</span>
+                </button>
+
+                <button class="regalo" data-regalo="2">
+                    <span class="numero-regalo">03</span>
+                    <span class="emoji-regalo">🌷</span>
+                    <span class="nombre-regalo">Un día perfecto</span>
+                    <span class="descripcion-regalo">Un recuerdo por construir</span>
+                    <span class="abrir-regalo">Abrir regalo ↗</span>
+                </button>
+
+                <button class="regalo" data-regalo="3">
+                    <span class="numero-regalo">04</span>
+                    <span class="emoji-regalo">✨</span>
+                    <span class="nombre-regalo">Un deseo</span>
+                    <span class="descripcion-regalo">Para tu futuro</span>
+                    <span class="abrir-regalo">Abrir regalo ↗</span>
+                </button>
+
+                <button class="regalo regalo-especial" data-regalo="4">
+                    <span class="numero-regalo">05</span>
+                    <span class="emoji-regalo">🎀</span>
+                    <span class="nombre-regalo">Una promesa</span>
+                    <span class="descripcion-regalo">Algo que quiero demostrarte</span>
+                    <span class="abrir-regalo">Abrir regalo ↗</span>
+                </button>
+
+            </div>
+
+            <div class="contador">
+                <div class="barra-contador">
+                    <div id="progresoRegalos"></div>
+                </div>
+                <p id="contadorTexto">Has descubierto 0 de 5 regalos</p>
+            </div>
+
+        </section>
+
+        <!-- VENTANA DEL REGALO -->
+
+        <div class="modal oculto" id="modalRegalo">
+
+            <div class="contenido-modal">
+
+                <button class="cerrar-modal" id="cerrarModal" aria-label="Cerrar">
+                    ×
+                </button>
+
+                <div class="decoracion-modal">✿</div>
+
+                <p class="etiqueta" id="numeroModal">REGALO 01</p>
+
+                <div class="emoji-modal" id="emojiModal">🫂</div>
+
+                <h2 id="tituloModal">Un abrazo</h2>
+
+                <div class="separador">
+                    <span></span> ♡ <span></span>
+                </div>
+
+                <p id="mensajeModal" class="mensaje-modal"></p>
+
+                <p class="firma-modal">Con mucho cariño ♡</p>
+
+                <button id="siguienteRegalo" class="boton-secundario">
+                    Volver a los regalos
+                </button>
+
+            </div>
+
+        </div>
+
+        <!-- CAJA FINAL -->
+
+        <section class="final oculto" id="final">
+
+            <p class="etiqueta">EL ULTIMO DETALLE</p>
+
+            <h2>Pero todavía guardé algo más para ti</h2>
+
+            <p class="texto-final">
+                Los cinco regalos anteriores representan cosas que me
+                gustaría darte, pero hay algo que no cabe en ninguno de ellos
+            </p>
+
+            <div class="caja-escenario">
+
+                <div class="caja" id="cajaFinal">
+
+                    <div class="tapa-caja" id="tapaCaja">
+                        <div class="lazo"></div>
+                    </div>
+
+                    <div class="cuerpo-caja">
+                        <span>♡</span>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <p class="instruccion-caja" id="instruccionCaja">
+                Toca la caja para descubrirlo
+            </p>
+
+            <div class="mensaje-caja oculto" id="mensajeCaja">
+
+                <div class="flor-final">❀</div>
+
+                <h3>Mi regalo más importante</h3>
+
+                <p>
+                    Si pudiera regalarte algo que durara para siempre,
+                    sería la tranquilidad de saber que eres una mujer
+                    que merece ser querida, respetada, valorada y elegida
+                    todos los días
+                </p>
+
+                <p>
+                    Me gustaría tener la oportunidad de demostrarte
+                    que puedo cuidar lo bonito que existe entre nosotros,
+                    aprender de mis errores y construir algo que nos haga
+                    bien a los dos
+                </p>
+
+                <p>
+                    No puedo prometerte una vida sin dificultades,
+                    pero sí puedo decirte que mis sentimientos son sinceros
+                    y que quiero acompañarlos con hechos
+                </p>
+
+                <p class="frase-final">
+                    Porque hay personas que no se encuentran todos los días
+                    y tú eres una de ellas
+                </p>
+
+                <div class="firma-final">
+                    Para ti, con todo mi cariño
+                    <strong>♡</strong>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Algunas cosas bonitas no se compran, se sienten</p>
+        <span>PROYECTO AURORA · DÍA 05</span>
+    </footer>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
