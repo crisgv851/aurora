@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#160d2b">
+<title>11:11 — Un universo para ti</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Nunito:wght@300;400;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="estilos.css">
+</head>
+<body>
+<div id="sky" aria-hidden="true"></div>
+<div class="nebula nebula-one" aria-hidden="true"></div>
+<div class="nebula nebula-two" aria-hidden="true"></div>
+<canvas id="confetti" aria-hidden="true"></canvas>
+
+<main>
+<section class="hero" id="home">
+  <div class="moon"><span></span></div>
+  <p class="eyebrow">11 · 11 · un día para celebrar tu existencia</p>
+  <h1>Un universo<br><em>para ti</em></h1>
+  <p class="hero-line">Feliz cumpleaños, <strong>amor de mi vida</strong>.</p>
+  <p class="hero-copy">Hoy el cielo tiene una razón más para brillar. Preparé este pequeño universo para celebrar tu vida, tus sueños, tu esencia y todas las cosas bonitas que mereces.</p>
+  <button class="main-button" id="enter">Entrar a tu universo <span>✦</span></button>
+  <p class="hint">Hay pequeños detalles esperándote. Explora cada rincón ♡</p>
+  <div class="scroll-mark">↓</div>
+</section>
+
+<div id="universe" class="hidden">
+  <section class="intro section">
+    <p class="eyebrow">este pequeño mundo es para ti</p>
+    <h2>Hoy celebramos <em>tu existencia</em></h2>
+    <p>Porque cumplir años no es solamente sumar un número. También es celebrar todo lo que has vivido, lo que has aprendido, las veces que te has levantado, las metas que has alcanzado y todas las versiones de ti que te han traído hasta aquí. Hoy quiero que el centro de todo seas tú.</p>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <p class="eyebrow">01 · deseos del universo</p>
+      <h2>Seis estrellas, <em>seis deseos enormes</em></h2>
+      <p>Cada estrella guarda un deseo escrito especialmente para ti. Tócalas y léelos con calma.</p>
+    </div>
+    <div class="wish-grid">
+      <button class="wish-star" data-title="Una felicidad que te encuentre siempre" data-message="Deseo que la felicidad te acompañe de muchísimas formas: en las grandes noticias que esperas, pero también en las cosas pequeñas que a veces pasan desapercibidas. Que puedas reír hasta que te duela la barriga, disfrutar una canción que te encante, contemplar un atardecer bonito, recibir un mensaje inesperado o simplemente despertar sintiendo que tienes un día nuevo por delante. Y cuando lleguen días difíciles, deseo que encuentres motivos para tener esperanza y personas que te recuerden que no tienes que poder con todo al mismo tiempo. Que nunca pienses que necesitas una vida perfecta para ser feliz; ojalá encuentres belleza incluso en los días sencillos.">✦<span>Felicidad</span></button>
+      <button class="wish-star" data-title="Salud, calma y tranquilidad" data-message="Deseo que tengas salud para vivir todas las aventuras que te esperan, energía para perseguir tus sueños y tranquilidad para disfrutar lo que vas consiguiendo. Que puedas descansar cuando lo necesites, respirar profundo cuando algo te preocupe y darte permiso de parar sin sentir que estás fallando. Que tu mente encuentre calma, que tu corazón se sienta liviano y que nunca te falten fuerzas para volver a intentarlo. Ojalá este nuevo año te regale más momentos de paz, días en los que todo se sienta un poquito más fácil y la certeza de que también mereces cuidarte, consentirte y ponerte entre tus prioridades.">✦<span>Salud y calma</span></button>
+      <button class="wish-star" data-title="Todos esos sueños que guardas" data-message="Deseo que no abandones ninguno de esos sueños que te hacen ilusión. Que encuentres oportunidades donde hoy solo ves dudas, que tengas valentía para comenzar incluso si no sabes exactamente cómo terminará el camino y que cada esfuerzo vaya acercándote a lo que tanto quieres. Ojalá puedas conocer lugares nuevos, aprender cosas que te apasionen, alcanzar metas que hoy parecen lejanas y celebrar cada logro sin compararte con nadie. Tu camino tiene su propio ritmo y no tienes que correr para demostrar nada. Deseo que un día mires atrás y sonrías al darte cuenta de todo lo que fuiste capaz de construir.">✦<span>Tus sueños</span></button>
+      <button class="wish-star" data-title="Personas y amor del bonito" data-message="Deseo que la vida te rodee de personas que te quieran de una manera sana y sincera; personas que escuchen lo que tienes para decir, respeten tus tiempos, celebren tus logros y te acompañen sin hacerte sentir pequeña. Que recibas abrazos que den tranquilidad, palabras que lleguen justo cuando las necesitas y gestos que te recuerden que eres importante. Que nunca tengas que cambiar tu esencia para encajar y que siempre encuentres espacios donde puedas ser tú, con tus ocurrencias, tus días buenos, tus dudas y todas tus formas de sentir. Mereces cariño que se note en los detalles y que también se demuestre con acciones.">✦<span>Amor bonito</span></button>
+      <button class="wish-star" data-title="Que siempre estés orgullosa de ti" data-message="Deseo que aprendas a reconocer lo increíble que eres, incluso en esos momentos en los que tú misma no consigues verlo. Que no olvides todo lo que has superado, las veces que seguiste adelante con miedo, los esfuerzos que nadie vio y las pequeñas victorias que también cuentan. Ojalá te hables con la misma paciencia con la que acompañarías a alguien que quieres mucho. No tienes que tener todas las respuestas ni hacerlo todo perfecto para sentir orgullo de ti. Estás creciendo, aprendiendo y construyendo tu propia historia. Que este año te permita mirar tu reflejo con cariño y decir: estoy haciendo lo mejor que puedo y eso también vale muchísimo.">✦<span>Orgullo de ti</span></button>
+      <button class="wish-star" data-title="Un año lleno de aventuras bonitas" data-message="Deseo que este año esté lleno de primeras veces, planes espontáneos, lugares que te dejen sin palabras, comidas deliciosas, canciones que se conviertan en favoritas y momentos que quieras contar una y otra vez. Que tengas oportunidades para descubrir cosas nuevas, conocer personas valiosas y crear recuerdos que te acompañen durante mucho tiempo. Ojalá la vida te sorprenda para bien, te abra puertas que ni siquiera imaginabas y te permita disfrutar el presente mientras construyes todo lo que viene. Que nunca se apague esa ilusión por descubrir qué cosa bonita puede pasar después.">✦<span>Aventuras</span></button>
+    </div>
+  </section>
+
+  <section class="section cake-section">
+    <p class="eyebrow">02 · tu momento especial</p>
+    <h2>Un deseo antes de <em>seguir brillando</em></h2>
+    <p class="section-copy">Cierra los ojos un instante, piensa en algo que quieras con todo tu corazón y, cuando estés lista, apaga las velitas.</p>
+    <div class="cake" aria-label="Pastel de cumpleaños con tres velitas">
+      <div class="candles" id="candles"><i class="candle"><b></b></i><i class="candle"><b></b></i><i class="candle"><b></b></i></div>
+      <div class="icing"></div><div class="cake-middle"></div><div class="cake-bottom"></div><div class="plate"></div>
+    </div>
+    <button class="main-button" id="blow">Apagar las velitas ✨</button>
+    <p id="cake-result" class="cake-result hidden">Que ese deseo tan bonito encuentre su camino para hacerse realidad. Y que nunca te falten razones para volver a pedir muchos más. ♡</p>
+  </section>
+
+  <section class="section garden-section">
+    <p class="eyebrow">03 · un jardín para ti</p>
+    <h2>Flores que representan <em>tus virtudes</em></h2>
+    <p class="section-copy">En lugar de fotografías, quise dejarte un jardín. Cada flor guarda una cualidad que merece ser celebrada. Toca cada una para verla florecer.</p>
+    <div class="garden">
+      <button class="flower-card" data-flower="Tu fortaleza" data-text="Admiro esa fuerza que tienes para continuar, incluso cuando las cosas no salen como esperabas. A veces ser fuerte no significa no cansarse, sino darte la oportunidad de descansar y aun así volver a intentarlo."><span class="flower flower-pink">✿</span><b>Fortaleza</b><small>Tu manera de seguir adelante</small></button>
+      <button class="flower-card" data-flower="Tu alegría" data-text="Ojalá nunca pierdas esa capacidad de encontrar motivos para reír, emocionarte y disfrutar las cosas que te gustan. Tu alegría merece espacio, tiempo y muchísimas oportunidades para aparecer."><span class="flower flower-lilac">✿</span><b>Alegría</b><small>La luz de tus momentos felices</small></button>
+      <button class="flower-card" data-flower="Tu esencia" data-text="Hay algo muy especial en ser tú. No necesitas parecerte a nadie ni cumplir expectativas ajenas para tener valor. Tu forma de pensar, sentir, hablar, soñar y mirar el mundo forma parte de lo que te hace única."><span class="flower flower-gold">✿</span><b>Tu esencia</b><small>Eso que te hace única</small></button>
+      <button class="flower-card" data-flower="Tu valentía" data-text="Deseo que nunca dudes de tu capacidad para comenzar de nuevo, tomar decisiones, aprender y abrirte camino. La valentía también está en pedir ayuda, reconocer lo que sientes y elegir lo que te hace bien."><span class="flower flower-blue">✿</span><b>Valentía</b><small>El valor de ser tú misma</small></button>
+    </div>
+    <div id="flower-message" class="flower-message">Tu jardín está esperando a que descubras sus flores. ♡</div>
+  </section>
+
+  <section class="section letter-section">
+    <p class="eyebrow">04 · una carta para celebrar tu vida</p>
+    <div class="letter-card">
+      <div class="letter-decoration">❀</div>
+      <h2>Para el amor de mi vida, <em>en su día especial</em></h2>
+      <p>Hoy es tu cumpleaños y, aunque quisiera encontrar las palabras más bonitas del mundo para este día, creo que ninguna sería suficiente para expresar todo lo bueno que deseo para ti. Aun así, quiero tomarme este momento para recordarte algo que espero que nunca olvides: tu vida es importante, tu presencia tiene valor y mereces celebrar cada parte de la persona que eres. Hoy no quiero que pienses en pendientes, preocupaciones o cosas que todavía no has conseguido. Hoy quiero que te permitas disfrutar, sonreír, recibir cariño y sentir que este día también es una oportunidad para reconocer todo lo que has recorrido.</p>
+      <p>Me gustaría que pudieras verte por un instante desde una mirada llena de cariño. Que reconocieras la cantidad de cosas bonitas que hay en ti, incluso esas que para ti parecen normales. Tu manera de ser, tus ideas, tus ocurrencias, tus gustos, tus sueños, tu forma de expresar lo que sientes y hasta esos pequeños detalles que quizá no notas son parte de una esencia que no se repite. No tienes que hacer algo extraordinario todos los días para ser alguien extraordinaria. No tienes que demostrar constantemente cuánto vales. Ya eres una persona digna de respeto, de amor, de oportunidades y de cosas hermosas simplemente por ser tú.</p>
+      <p>Deseo que este nuevo año de vida te encuentre con ilusión. Que tengas motivos para levantarte emocionada, proyectos que te hagan sentir orgullosa y experiencias que te enseñen cosas nuevas. Que se abran puertas que llevas tiempo esperando y que también aparezcan caminos inesperados que terminen llevándote a lugares maravillosos. Si hay algo que sueñas desde hace mucho, ojalá encuentres la oportunidad y la confianza para ir por ello. Y si en algún momento las cosas no salen como las imaginabas, deseo que tengas paciencia contigo misma. Ningún tropiezo borra todo lo que has avanzado y ningún día difícil define toda tu historia.</p>
+      <p>También deseo que tengas tiempo para ti. Para hacer las cosas que te gustan, escuchar tu música favorita, descansar sin mirar el reloj, reírte por cualquier tontería, conocer lugares, probar algo nuevo o simplemente disfrutar de una tarde tranquila. Que no sientas que debes estar ocupada todo el tiempo para estar haciendo algo valioso. A veces los momentos más bonitos son los más sencillos: una conversación que se alarga, una canción que llega justo en el momento indicado, una comida que disfrutas mucho o una risa que termina contagiándose. Ojalá este año esté lleno de esos instantes que parecen pequeños, pero terminan siendo enormes en el corazón.</p>
+      <p>Quiero que te rodees de personas que te hagan bien, que te escuchen con atención y que celebren tus alegrías como si fueran propias. Personas con quienes puedas ser completamente tú, sin tener que esconder tus emociones ni fingir que todo está perfecto. Que nunca te falte una mano amiga, una palabra de ánimo o un abrazo sincero. Y, sobre todo, deseo que tú misma seas una de esas personas que se tratan con ternura. Que aprendas a hablarte bonito, a reconocer tus esfuerzos y a darte el mismo cuidado que tantas veces ofreces a los demás.</p>
+      <p>Si pudiera pedir algo para ti en este cumpleaños, pediría que la vida te trate con dulzura, que tengas salud para disfrutar cada aventura, tranquilidad para vivir cada etapa y valentía para perseguir todo aquello que te haga ilusión. Pediría que lleguen buenas noticias, que tus esfuerzos sean reconocidos, que tengas motivos para celebrar y que nunca pierdas la curiosidad por descubrir lo que el mundo todavía tiene preparado para ti. Pediría que cuando mires hacia atrás puedas sentir orgullo y cuando mires hacia adelante puedas sentir esperanza.</p>
+      <p>Gracias por existir y por ser esa persona con tantas cosas bonitas por descubrir y compartir. Espero que hoy te recuerden lo mucho que vales, que recibas palabras que te abracen el corazón y que guardes recuerdos preciosos de este día. No permitas que el paso del tiempo te haga olvidar tus sueños ni que las dificultades te hagan dudar de tu capacidad. Sigue creciendo a tu manera, a tu ritmo y con tus propias decisiones. No hay una sola forma correcta de vivir una vida bonita; deseo que construyas una que se sienta tuya y que te haga feliz de verdad.</p>
+      <p>Y cuando termine este día, cuando se apaguen las velitas y todo vuelva poquito a poquito a la normalidad, ojalá te quede la sensación de que mereces muchas cosas buenas, no solamente hoy, sino todos los días. Que este cumpleaños sea una página preciosa de tu historia y que el año que comienza venga cargado de motivos para sonreír. Feliz cumpleaños, amor de mi vida. Te deseo lo más bonito que la vida pueda ofrecerte: felicidad sincera, sueños cumplidos, salud, paz, amor y muchísimos momentos inolvidables. Que seas inmensamente feliz, hoy y siempre. ♡</p>
+      <div class="letter-signature">Con muchísimo cariño <span>♡</span></div>
+    </div>
+  </section>
+
+  <section class="section gift-section">
+    <p class="eyebrow">05 · una última sorpresa</p>
+    <h2>Una cajita llena de <em>buenos deseos</em></h2>
+    <p class="section-copy">Toca el regalo para abrirlo. Hay unas últimas palabras esperando por ti.</p>
+    <button id="gift" class="gift-box" aria-label="Abrir regalo"><span class="gift-lid"></span><span class="gift-ribbon"></span><span class="gift-body"></span><span class="gift-bow">♡</span></button>
+    <div id="gift-message" class="gift-message hidden">
+      <h3>Que nunca se te olvide…</h3>
+      <p>Tu historia todavía tiene muchísimas páginas por escribir. Hay lugares que aún no conoces, personas que aún no has encontrado, canciones que todavía no has escuchado y sueños que un día vas a mirar convertidos en realidad. No tengas miedo de crecer, cambiar de opinión, comenzar de nuevo o elegir caminos distintos. La vida es tuya y mereces vivirla con ilusión, libertad y felicidad.</p>
+      <strong>¡Feliz cumpleaños, amor de mi vida! ♡</strong>
+    </div>
+  </section>
+
+  <footer class="finale">
+    <div class="final-star">✧</div>
+    <p class="eyebrow">11 · 11</p>
+    <h2>Que tu vida esté llena<br>de <em>momentos mágicos</em></h2>
+    <p>Hoy, mañana y en cada nuevo comienzo: deseo que seas feliz.</p>
+    <button class="main-button" id="celebrate">Celebrar tu día ✨</button>
+    <p class="footer-note">Hecho con muchísimo cariño, para ti. ♡</p>
+  </footer>
+</div>
+</main>
+
+<div id="modal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="modal-title">
+  <div class="modal-card">
+    <button class="modal-close" id="modal-close" aria-label="Cerrar">×</button>
+    <p class="eyebrow">un detalle para ti</p><h2 id="modal-title"></h2><p id="modal-text"></p>
+    <button class="main-button" id="modal-ok">Guardar en el corazón ♡</button>
+  </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
